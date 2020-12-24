@@ -20,13 +20,13 @@ app = FastAPI()
 def home():
     return {"message":"Bruh"}
 
-# # Dependency
-# def get_db():
-#     db = SessionLocal()
-#     try:
-#         yield db
-#     finally:
-#         db.close()
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 # """Route to delete all the users
 # - Just added this in so we can clean the database and repopulate it for the unit tests.
@@ -51,10 +51,10 @@ def home():
 #     return crud.create_user(db=db, user=user)
 
 
-# @app.get("/users/", response_model=List[schemas.User])
-# def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-#     users = crud.get_users(db, skip=skip, limit=limit)
-#     return users
+@app.get("/users/", response_model=List[schemas.User])
+def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    users = crud.get_users(db, skip=skip, limit=limit)
+    return users
 
 
 # @app.get("/users/{user_id}", response_model=schemas.User)
