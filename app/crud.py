@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
-import sql_app.models as models
-import sql_app.schemas as schemas
+import app.models as models
+import app.schemas as schemas
 
 
 def get_user(db: Session, user_id: int):

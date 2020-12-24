@@ -7,10 +7,10 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
-import sql_app.crud as crud
-import sql_app.models as models
-import sql_app.schemas as schemas
-from sql_app.database import SessionLocal, engine
+import app.crud as crud
+import app.models as models
+import app.schemas as schemas
+from app.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 

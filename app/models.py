@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
-from sql_app.database import Base
+from app.database import Base
 
 
 class User(Base):
